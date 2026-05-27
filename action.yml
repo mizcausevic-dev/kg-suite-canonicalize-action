@@ -1,0 +1,44 @@
+name: "Kinetic Gain Suite Canonicalize (drift gate)"
+description: "Compute canonical sha256 for every Kinetic Gain Suite JSON document in a directory and compare against a committed baseline (.kg-hashes.json). Catches silent edits — any doc whose hash drifted without a version bump trips the gate. Post a Markdown summary as a PR comment and fail the build on drift."
+author: "mizcausevic-dev"
+branding:
+  icon: "lock"
+  color: "blue"
+
+inputs:
+  dir:
+    description: "Directory containing *.json Kinetic Gain Suite documents."
+    required: true
+  baseline:
+    description: "Path to the baseline hash file. Defaults to '<dir>/.kg-hashes.json'."
+    required: false
+  update-baseline:
+    description: "When 'true', overwrite the baseline file with current hashes (use to seed or accept the drift). Default 'false'."
+    required: false
+    default: "false"
+  comment-on-pr:
+    description: "Post the Markdown summary as a PR comment. 'auto' (default) posts only on pull_request events."
+    required: false
+    default: "auto"
+  fail-on-drift:
+    description: "Fail the run when any file's canonical hash drifted from the baseline (default 'true')."
+    required: false
+    default: "true"
+  github-token:
+    description: "Token used to post the PR comment (defaults to GITHUB_TOKEN)."
+    required: false
+    default: ${{ github.token }}
+
+outputs:
+  total-files:
+    description: "Number of JSON files analyzed."
+  drifted-files:
+    description: "Number of files whose hash drifted from the baseline."
+  new-files:
+    description: "Number of files present now but not in the baseline."
+  removed-files:
+    description: "Number of files in the baseline but no longer present."
+
+runs:
+  using: "node20"
+  main: "dist/index.js"

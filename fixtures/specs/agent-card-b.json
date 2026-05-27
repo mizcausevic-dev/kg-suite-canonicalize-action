@@ -1,0 +1,14 @@
+{
+  "agent_card_version": "0.1",
+  "agent": { "id": "b", "name": "B", "version": "1.0.0", "provider": "kg", "description": "second" },
+  "capabilities": {
+    "primary_purpose": "test",
+    "models_used": [{ "model": "gpt-4o" }],
+    "tools": [{ "name": "search", "side_effects": "read" }],
+    "max_context_tokens": 64000,
+    "memory_persistence": "session",
+    "autonomy_level": "supervised"
+  },
+  "deployment": { "environment": "production" },
+  "safety_posture": { "incident_response_uri": "https://example.com/incidents" }
+}

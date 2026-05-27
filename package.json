@@ -1,0 +1,44 @@
+{
+  "name": "kg-suite-canonicalize-action",
+  "version": "0.1.0",
+  "description": "GitHub Action that compares each Kinetic Gain Suite spec doc's canonical sha256 against a committed baseline (.kg-hashes.json) and fails the build when any doc drifted without a version bump. Silent-edit detector. Third cross-protocol Action — companion to kg-suite-spec-version-tracker-action and kg-suite-conformance-runner-action.",
+  "type": "module",
+  "private": true,
+  "license": "AGPL-3.0-or-later",
+  "author": "mizcausevic-dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mizcausevic-dev/kg-suite-canonicalize-action"
+  },
+  "keywords": [
+    "github-action",
+    "actions",
+    "kinetic-gain-suite",
+    "canonicalize",
+    "sha256",
+    "drift-detection",
+    "audit",
+    "ai-governance",
+    "typescript"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/node": "^22.10.0",
+    "@vitest/coverage-v8": "^2.1.8",
+    "eslint": "^9.17.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.0",
+    "vitest": "^2.1.8"
+  }
+}
