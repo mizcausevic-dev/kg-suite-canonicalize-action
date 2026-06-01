@@ -1,5 +1,5 @@
 name: "Kinetic Gain Suite Canonicalize (drift gate)"
-description: "Compute canonical sha256 for every Kinetic Gain Suite JSON document in a directory and compare against a committed baseline (.kg-hashes.json). Catches silent edits — any doc whose hash drifted without a version bump trips the gate. Post a Markdown summary as a PR comment and fail the build on drift."
+description: "Compute canonical sha256 for every Kinetic Gain Suite JSON doc and fail the build on signed-document drift."
 author: "mizcausevic-dev"
 branding:
   icon: "lock"
